@@ -54,15 +54,18 @@ if (hour < 12) {
     document.writeln(name + ", Thank you very much for using our ordering page.")
     
     document.writeln("You have ordered " ,quantity  +  item)
+    document.writeln("You will receive them on")
 
 </script> 
 
+<p id="demo"></p>
+
 <script>
 const d = new Date();
-d.setDate(+7);
+d.setDate(d.getDate() + 7);
+document.getElementById("demo").innerHTML = d;
+</script>
 
- document.writeln("You will get your order on", + new Date)
-    </script>
 
 </script>
 </head>
