@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+
+ 
+  <center> <h1> Steph Genco's Baseball Cards!</h1> </center>
+
+    <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col-6">
+            <h2>These baseball cards are some of the finest offered on the web.</h2>
+            <ul class="list-group">
+              <li class="list-group-item">Vintage cards</li>
+              <li class="list-group-item">New Editions</li>
+              <li class="list-group-item">Rare Finds</li>
+              <li class="list-group-item"><b>MVPs</b></li>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <img src=baseballcards.jpeg class="img rounded" alt="mets" width="250" height="250">
+          </div>
+        </div>
+</head>
+
+<head>
+<script>
+function submitForm() {
+var elements = document.getElementById("lab5form").elements;
+var elemsArr1 = Array.from(elements);
+var submission = {};
+elemsArr1.forEach((element) => submission[element.name]=element.value)
+
+console.log(element.name + " " + element.value);
+
+for (i=0; i < element.length; i++) {
+var element = elements [i];
+submission[element.name]=element.value;}
+displayResults(submission);}
+
+
+elements.forEach(element => console.log(element));
+
+</script>
+</head>
+
+<body>
+    <form id="lab5form">
+First name: <input type="text" name="fname" value="firstname"> <br>
+Last name: <input type="text" name="lname" value="lastname"> <br>
+Email: <input type="text" name="Email" value="email@provider.com"> <br>
+Password: <input type="password" name="Password" value="Must include ? and !"> <br>
+Date of Birth: <input type="date" name="dob" value="dob"> <br>
+
+<button onclick="submitForm()">Submit</button>
+
+</form>
+
+<div id="submissionResults"
+
+<p> Please click submit to register an account and get started on an order!</p>
+
+<script>
+
+function displayResults(submission) {
+var displayArea = document.getElementById("submission results");
+displayArea.innerHTML="<h2>Woo! You are registered successfully!</h2>"
+displayArea.innerHTML = "<p>First Name: " + submission.fname + "</p>";
+displayArea.innerHTML = "<p>Last Name: " + submission.lname + "</p>";
+displayArea.innerHTML = "<p>Email: " + submission.Email + "</p>";
+displayArea.innerHTML = "<p>Password: " + submission.Password + "</p>";
+text = text.replaceAll("password","*");
+displayArea.innerHTML = "<p>Date of Birth: " + submission.dob + "</p>";
+}
+
+</script>
+
+
+</body>
