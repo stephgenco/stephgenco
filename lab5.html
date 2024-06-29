@@ -45,12 +45,16 @@
   function displayResults(submission) {
 var displayArea = document.getElementById("submissionResults");
 
-//submission.password = submission.password.replaceAll(submission.password, "*");
-//why does this code not work? Is replaceAll the best way to hide password?
+var hidepw = "";
+
+for( i=0 ; i < submission.Password.length; i++) {
+
+hidepw = hidepw + "*";
+}
 
 displayArea.innerHTML = "<h2>Woo! You are registered successfully!</h2>" + "<p>First Name: " + submission.fname + "<p>Last Name: " + 
   submission.lname + "</p>" + "<p>Email: " + submission.Email + "</p>" + "<p>Password: " + 
-    submission.Password + "</p>" + "<p>Date of Birth: " + submission.dob + "</p>";
+    hidepw + "</p>" + "<p>Date of Birth: " + submission.dob + "</p>";
   }
 
   function baddisplayResults(submission) {
