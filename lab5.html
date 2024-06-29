@@ -20,16 +20,6 @@
   var email = document.getElementById("email");
   var password = document.getElementById("password");
   var dateofbirth = document.getElementById("dob");
-  
-  function validatepassword (password) {
-  
-  for (i=0; i<password.length; i++) {
-  
-  if (password.charat(i)== '?' || password.charat(i)== '!')
-  return true
-  }
-  return false;
-}
 
   function submitForm() {
   var elements = document.getElementById("lab5form").elements;
@@ -40,9 +30,12 @@
   for (i=0; i < elements.length; i++) {
   var element = elements[i];
   submission[element.name]=element.value;}
-  displayResults(submission);
-  
-  elements.forEach(element => console.log(element));
+
+  if (validatepassword(submission.Password)){
+    displayResults(submission);
+  } else {
+    baddisplayResults(submission);
+    }
   }
 
   function myfunction() {
@@ -51,11 +44,30 @@
   
   function displayResults(submission) {
 var displayArea = document.getElementById("submissionResults");
-displayArea.innerHTML="<h2>Woo! You are registered successfully!</h2>"
-displayArea.innerHTML = "<p>First Name: " + submission.fname + "<p>Last Name: " + 
+
+//submission.password = submission.password.replaceAll(submission.password, "*");
+//why does this code not work? Is replaceAll the best way to hide password?
+
+displayArea.innerHTML = "<h2>Woo! You are registered successfully!</h2>" + "<p>First Name: " + submission.fname + "<p>Last Name: " + 
   submission.lname + "</p>" + "<p>Email: " + submission.Email + "</p>" + "<p>Password: " + 
     submission.Password + "</p>" + "<p>Date of Birth: " + submission.dob + "</p>";
   }
+
+  function baddisplayResults(submission) {
+var displayArea = document.getElementById("submissionResults");
+
+displayArea.innerHTML = "<h2>Sorry! Your password needs to have a special character like ! or ?</h2>";
+  }
+  
+  function validatepassword(password) {
+  
+  for (i=0; i<password.length; i++) {
+  
+  if (password.charAt(i) == "?" || password.charAt(i) == "!") {
+  return true;
+  } }
+  return false;
+}
 
   </script>
   
@@ -91,7 +103,7 @@ displayArea.innerHTML = "<p>First Name: " + submission.fname + "<p>Last Name: " 
 First name: <input type="text" name="fname" value="firstname"> <br>
 Last name: <input type="text" name="lname" value="lastname"> <br>
 Email: <input type="text" name="Email" value="email@provider.com"> <br>
-Password: <input type="text" name="Password" value="must contain ? or !"> <br>
+Password: <input type="text" name="Password" value="must include ! or ?"> <br>
 Date of Birth: <input type="text" name="dob" value="dob"> <br>
 </form>
 
@@ -103,8 +115,8 @@ Date of Birth: <input type="text" name="dob" value="dob"> <br>
 </div>
 
 <div class="col-6">
-  <h2>Here are your form results</h2>
 
   <div id="submissionResults"></div>
 
 </body>
+
