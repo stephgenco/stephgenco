@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <title>Lab 6</title>
+
+    <script type = "module">
+
+        const api_url = 'https://brianobruno.github.io/cats.json';
+        const options = {method: 'GET',};
+        
+        const response = await fetch(api_url, options);
+        const result = await response.json();
+        
+       const data = result['facts'];
+       data.sort((a,b) => a.factId-b.factId);
+
+       var table = "<table> <tr><th>factId</th><th>fact</th></tr>";
+
+for (let i = 0; i < data.length; i++) {
+  table += "<tr><td>" + data[i]['factId'] + "</td><td>" + data[i]['text'] + "</td></tr>"
+}
+        table = table + "</table>"
+
+    document.getElementById('datatable').innerHTML = table;
+
+   async function callAPIpic(){
+        const api_url = 'https://brianobruno.github.io/cats.json';
+        const options = {method: 'GET',};
+        
+        const response = await fetch(api_url, options);
+        const result = await response.json();
+        const photo = result['catPhoto'];
+
+        document.getElementById('pic').src = photo;
+    }
+    window.callAPIpic = callAPIpic
+        </script>
+
+</head>
+
+<body>
+    <div id='datatable'> </div>
+
+    <button onclick="callAPIpic()">Call API to see who the facts are about!</button>
+
+    <img id='pic' src=questionmark.png alt="questionmark" width="250" height="250">
+
+</body>
+</html>
