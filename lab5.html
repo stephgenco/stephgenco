@@ -52,15 +52,15 @@ for( i=0 ; i < submission.Password.length; i++) {
 hidepw = hidepw + "*";
 }
 
-displayArea.innerHTML = "<h2>Woo! You are registered successfully!</h2>" + "<p>First Name: " + submission.fname + "<p>Last Name: " + 
+disresults.innerHTML = "<h2>Woo! You are registered successfully!</h2>" + "<p>First Name: " + submission.fname + "<p>Last Name: " + 
   submission.lname + "</p>" + "<p>Email: " + submission.Email + "</p>" + "<p>Password: " + 
     hidepw + "</p>" + "<p>Date of Birth: " + submission.dob + "</p>";
   }
 
   function baddisplayResults(submission) {
-var displayArea = document.getElementById("submissionResults");
+var disresults = document.getElementById("submissionResults");
 
-displayArea.innerHTML = "<h2>Sorry! Your password needs to have a special character like ! or ?</h2>";
+disresults.innerHTML = "<h2>Sorry! Your password needs to have a special character like ! or ?</h2>";
   }
   
   function validatepassword(password) {
