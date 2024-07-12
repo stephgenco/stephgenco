@@ -10,38 +10,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project Genco</title>
 
+    <script>
+      function ShowAlert(){
+        alert ("Love BOOKS? You are in the right place!!");}
+
+      function changecov1(){
+document.getElementById("demo1").innerHTML="Kristen Harmel";}
+
+function changecov2(){
+  document.getElementById("demo2").innerHTML="Benjamin Stevenson";}
+
+  function changecov3(){
+    document.getElementById("demo3").innerHTML="Jo Piazza";}
+    </script>
+
 
 </head>
 <body>
-    <center><div class="p-3 mb-2 bg-success-subtle text-success-emphasis">Love BOOKS? You are in the right place!</div></center>
+    <center><div class="p-3 mb-2 bg-success-subtle text-success-emphasis"><button class="btn btn-warning" onclick="ShowAlert()">CLICK!</button></div></center>
+    <center></center>
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
 
-      <nav class="navbar" style="background-color: #48df94;">
+      <nav class="navbar" style="background-color: #a406949d;">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
-           <a class="nav-link active" aria-current="page">Main Page</a>
-            <a class="navbar-brand" href="https://stephgenco.github.io/Generate%20Books.html">Generate Books</a>
-            <a class="navbar-brand" href="">Random</a>
-            <a class="navbar-brand" href="">Educators</a>
+            <nav class="nav">
+              <a class="nav-link active" aria-current="page" href="#">Home Page</a>
+              <a class="nav-link" href="https://stephgenco.github.io/Generate%20Books.html">Generate Books</a>
+              <a class="nav-link" href="https://stephgenco.github.io/Random.html">Random</a>
+              <a class="nav-link" href="https://stephgenco.github.io/Educator.html">Educators</a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-              </div>
-            </div>
-          </div>
-      </nav>
-    </nav>
+            </nav></div></div></div></nav></nav></div></div>
+      
 
       <div class="container text-center">
         <div class="row align-items-start">
-          <div class="col-8">
-            <h2>On this web application, you will be able to explore books and their features.</h2>
-            <h3>Some things you will be able to do on the above tabs are...</h3>
+          <div class="col-6">
+            <h4>On this web application, you will be able to explore books and their features. Some things you will be able to do on the above tabs are...</h4>
+
             <ul class="list-group">
               <li class="list-group-item">Generate a book</li>
               <li class="list-group-item">Random Author</li>
@@ -49,11 +62,40 @@
               </li>
             </ul>
           </div>
-          <div class="col-4">
+          <div class="col-6">
             <img src= librarybooks.jpg class="img rounded" alt="librarybookshelf" width="350" height="200">
           </div>
         </div>
       </div>
-    
+
+      <center><div class="p-3 mb-2 bg-warning-subtle text-success-emphasis"> <h2>Favorite Books Section!</h2>
+    <h5>These are some of my favorite reads. Please click the button to see the author of each book!</h5></div></center> 
+      <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col-4">
+          
+            <p id = "demo1">The Book of Lost Names</p>
+            <img src= booklostnames.jpg alt="The Book of Lost Names Cover" height="250" width="200">
+            <button class="btn btn-info" onclick="changecov1()">Click Here!</button>
+          </div>
+          <div class="col-4">
+            <p id = "demo2">Everyone In My Family Has Killed Someone</p>
+            <img src= everyone.jpg alt="Everyone In My Family Has Killed SomeoneCover" height="250" width="200">
+            <button class="btn btn-danger" onclick="changecov2()">Click Here!</button>
+          </div>
+          <div class="col-4">
+            <p id = "demo3">The Sicilian Inheritance</p>
+            <img src= sicilia.jpeg alt="Sicilian Inheritance Cover" height="250" width="200">>
+            <button class="btn btn-dark" onclick="changecov3()">Click Here!</button>
+          </div>
+        </div>
+      </div>
+
+      <center><div class="p-3 mb-2 bg-info-subtle text-success-emphasis"> <h2>Thank You</h2>
+      <h4>This website pulls information from Open Library API. A big thank you to them for being a free API online with such great resources. 
+        Thanks to the developers for working on it!</h4></div></center>
+      
+
+       <center> <img src= openlib.png alt="Open Library API screenshot" height="200" width="500"> </center>  
 </body>
 </html>
