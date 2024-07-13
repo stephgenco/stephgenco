@@ -9,25 +9,20 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generate Books</title>
-
-    <script>
-        const api_url = "https://openlibrary.org/search.json";
-        const options = {method: 'GET',};
-        const response = await fetch (url, options);
-        const result = await response.json();
-        const myObj = JSON.parse(result);
-    </script>
+    <title>Author</title>
 
 </head>
+
+
 <body>
+
     <nav class="nav">
         <a class="nav-link" href="https://stephgenco.github.io/Finalproject.html#">Go Back Home</a>
         </nav>
 
-    <center><div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis">Here we will generate books based on key words you search for!</div></center>
-    
-    <button class="btn btn-primary" onclick="insertfunctname()">Generate Books!</button>
+   <center><div class="p-3 mb-2 bg-info-subtle text-info-emphasis">Here we will generate works by the author you search for!</div></center>
+   
+   <button class="btn btn-info" onclick="insertfunctname()">Search!</button>
 
 </body>
 </html>
