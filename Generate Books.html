@@ -12,11 +12,16 @@
     <title>Generate Books</title>
 
     <script>
-        const api_url = "https://openlibrary.org/search.json";
-        const options = {method: 'GET',};
-        const response = await fetch (url, options);
-        const result = await response.json();
-        const myObj = JSON.parse(result);
+    async function genbooksnow(){
+    const booksToSearch = document.getElementById("input").value;
+    //which url do I call?
+    //const url = "https://openlibrary.org/search.json?q=" + booksToSearch;
+    //const url = "https://openlibrary.org/search.json?fields=*&q=" + booksToSearch;
+    const options = {method: 'GET',};
+    const response = await fetch (url, options);
+    const result = await response.json();
+    const myObj = JSON.parse(result);
+    }
     </script>
 
 </head>

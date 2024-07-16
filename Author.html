@@ -12,11 +12,17 @@
     <title>Author</title>
 
     <script>
-
+        async function genauthornow(){
+        const authorToSearch = document.getElementById("input").value;
+        const url = "https://openlibrary.org/search/authors.json?q=" + authorToSearch;
+        const options = {method: 'GET',};
+        const reponse = await fetch (url, options);
+        const result = await response.json();
+        const myObj = JSON.parse(result);
+        }
     </script>
 
 </head>
-
 
 <body>
 
