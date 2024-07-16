@@ -21,6 +21,7 @@
     const response = await fetch (url, options);
     const result = await response.json();
     const myObj = JSON.parse(result);
+
     }
     </script>
 
@@ -30,7 +31,7 @@
         <a class="nav-link" href="https://stephgenco.github.io/Finalproject.html#">Go Back Home</a>
         </nav>
 
-    <center><div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis">Here we will generate books based on key words you search for!<br>
+    <center><div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis"><h5>Here we will generate books based on key words you search for!</h5><br>
     
     <input id="input">
     <button class="btn btn-primary" onclick="genbooksnow()">Get Books!</button>
