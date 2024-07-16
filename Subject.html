@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject</title>
+
+    <script>
+        async function showCSbooks(){
+        //is this correct url to call?
+        const url = "https://openlibrary.org/search/subjects.json?q=computerscience"
+        const options = {method: 'GET',};
+        const response = await fetch (url, options);
+        const result = await response.json();
+        const myObj = JSON.parse(result);
+        }
+
+       
+        async function showELAbooks(){
+        //is this correct url to call?
+        const url = "https://openlibrary.org/search/subjects.json?q=reading"
+        const options = {method: 'GET',};
+        const response = await fetch (url, options);
+        const result = await response.json();
+        const myObj = JSON.parse(result);
+        }
+
+        async function showMATHbooks(){
+        //is this correct url to call?
+        const url = "https://openlibrary.org/search/subjects.json?q=mathematics"
+        const options = {method: 'GET',};
+        const response = await fetch (url, options);
+        const result = await response.json();
+        const myObj = JSON.parse(result);
+        }
+        </script>
+
+</head>
+
+
+<body>
+    <nav class="nav">
+        <a class="nav-link" href="https://stephgenco.github.io/Finalproject.html#">Go Back Home</a>
+        </nav>
+
+        <center><div class="p-3 mb-2 bg-dark-subtle text-danger-emphasis">Search for books based on the search filters provided</div></center>
+                <button class="btn btn-secondary" onclick="showCSbooks()">Get Computer Science Books</button> <br>
+
+                <button class="btn btn-dark" onclick="showELAbooks()">Get ELA Books</button> <br>
+
+                <button class="btn btn-secondary" onclick="showMATHbooks()">Get Math Books</button> <br>
+
+
+            </div></center>
+
+
+</body>
+</html>
