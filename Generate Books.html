@@ -14,15 +14,38 @@
     <script>
     async function genbooksnow(){
     const booksToSearch = document.getElementById("input").value;
-    //which url do I call?
-    //const url = "https://openlibrary.org/search.json?q=" + booksToSearch;
-    //const url = "https://openlibrary.org/search.json?fields=*&q=" + booksToSearch;
+    const url = "https://openlibrary.org/search.json?title=" + booksToSearch;
     const options = {method: 'GET',};
     const response = await fetch (url, options);
     const result = await response.json();
-    const myObj = JSON.parse(result);
+    const titles = result["docs"];
+    var htmlstring = "<div class='table-responsive'> <table id='booktable' class='table table-light table-striped'> <tr><th>Title</th><th>Author</th><th>Date Published</th></tr>";
+        for (let i=0; i<titles.length; i++){
+            htmlstring += "<tr><td>" + titles[i]["title"] + "</td><td>" + titles[i]["author_name"] + "</td><td>" + titles[i]["first_publish_year"] + "</td></tr>";
+        }
+    htmlstring += "</table> </div>";
+    document.getElementById("output").innerHTML=htmlstring;
 
     }
+
+    function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("bookfilter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("booktable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
     </script>
 
 </head>
@@ -31,13 +54,17 @@
         <a class="nav-link" href="https://stephgenco.github.io/Finalproject.html#">Go Back Home</a>
         </nav>
 
-    <center><div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis"><h5>Here we will generate books based on key words you search for!</h5><br>
+    <center><div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis"><h5>Here we will generate books based on titles you search for!</h5><br>
     
     <input id="input">
     <button class="btn btn-primary" onclick="genbooksnow()">Get Books!</button>
+    <input type="text" id="bookfilter" onkeyup="myFunction()" placeholder="Filter By Year">
+    <div id="output">Your search results will appear here!</div>
     <div id="output"> </div>
     </center>
 </div>
+
+
 
 
 </body>

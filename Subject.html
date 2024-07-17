@@ -17,8 +17,14 @@
         const options = {method: 'GET',};
         const response = await fetch (url, options);
         const result = await response.json();
-        const myObj = JSON.parse(result);
-        }
+        const subjects = result["docs"];
+      var htmlstring = "<ul class='list-group'>";
+    for (let i=0; i<subjects.length; i++){
+        htmlstring += "<li class='list-group-item list-group-item-primary'>" + subjects[i]["name"]+ "</li>";
+    }
+document.getElementById("output1").innerHTML=htmlstring;
+}
+    
 
        
         async function showELAbooks(){
@@ -26,16 +32,26 @@
         const options = {method: 'GET',};
         const response = await fetch (url, options);
         const result = await response.json();
-        const myObj = JSON.parse(result);
-        }
+        const subjects = result["docs"];
+      var htmlstring = "<ul class='list-group'>";
+    for (let i=0; i<subjects.length; i++){
+        htmlstring += "<li class='list-group-item list-group-item-primary'>" + subjects[i]["name"]+ "</li>";
+    }
+document.getElementById("output2").innerHTML=htmlstring;
+}
 
         async function showMATHbooks(){
         const url = "https://openlibrary.org/search/subjects.json?q=mathematics"
         const options = {method: 'GET',};
         const response = await fetch (url, options);
         const result = await response.json();
-        const myObj = JSON.parse(result);
-        }
+        const subjects = result["docs"];
+      var htmlstring = "<ul class='list-group'>";
+    for (let i=0; i<subjects.length; i++){
+        htmlstring += "<li class='list-group-item list-group-item-primary'>" + subjects[i]["name"]+ "</li>";
+    }
+document.getElementById("output3").innerHTML=htmlstring;
+}
         </script>
 
 </head>
@@ -54,16 +70,19 @@
               <div class="col-4">
                 <div class="p-3 mb-2 bg-secondary-subtle text-success-emphasis">
                     <button class="btn btn-outline-success" onclick="showCSbooks()">Get Computer Science Books</button> <br>
-                    </div> </div>
+                    <div id = "output1"></div>
+                  </div> </div>
     
               <div class="col-4">
                 <div class="p-3 mb-2 bg-dark-subtle text-success-emphasis">
                     <button class="btn btn-outline-success" onclick="showELAbooks()">Get ELA Books</button> <br>
+                    <div id = "output2"></div>
               </div> </div>
     
               <div class="col-4">
                 <div class="p-3 mb-2 bg-secondary-subtle text-success-emphasis">
                     <button class="btn btn-outline-success" onclick="showMATHbooks()">Get Math Books</button> <br>
+                    <div id = "output3"></div>
               </div> </div>
               
             </div>

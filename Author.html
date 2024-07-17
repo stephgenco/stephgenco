@@ -12,14 +12,39 @@
     <title>Author</title>
 
     <script>
-        async function genauthornow(){
-        const authorToSearch = document.getElementById("input").value;
-        const url = "https://openlibrary.org/search/authors.json?q=" + authorToSearch;
-        const options = {method: 'GET',};
-        const reponse = await fetch (url, options);
-        const result = await response.json();
-        const myObj = JSON.parse(result);
-        }
+        async function genauthornow() {
+    const authorToSearch = document.getElementById("input").value;
+    const url = "https://openlibrary.org/search/authors.json?q=" + authorToSearch;
+    const options = {method: 'GET',};
+    const response = await fetch (url, options);
+    const result = await response.json();
+    const authors = result["docs"];
+    var htmlstring = "<div class='table-responsive'> <table id='authortable'class='table table-light table-striped'> <tr><th>Author Name</th><th>Top Work</th><th>Number of Works</th></tr>";
+    for (let i=0; i<authors.length; i++){
+     htmlstring += "<tr><td>" + authors[i]["name"] + "</td><td>" + authors[i]["top_work"] + "</td><td>" + authors[i]["work_count"] + "</td></tr>";
+    }
+    htmlstring += "</table> </div>";
+    document.getElementById("output").innerHTML=htmlstring;
+}
+
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("countfilter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("authortable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
     </script>
 
 </head>
@@ -34,7 +59,8 @@
 
     <input id="input">
    <button class="btn btn-warning" onclick="genauthornow()">Search Author!</button>
-    <div id="output"></div>
+   <input type="text" id="countfilter" onkeyup="myFunction()" placeholder="Filter By # of Works">
+    <div id="output">Your search results will appear here!</div>
    </center>
 </div>
 
