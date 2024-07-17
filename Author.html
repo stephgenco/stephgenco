@@ -27,9 +27,47 @@
     document.getElementById("output").innerHTML=htmlstring;
 }
 
-function myFunction() {
+function filterName() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("countfilter");
+  input = document.getElementById("namefilter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("authortable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function filterTopwork() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("topworkfilter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("authortable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function filterWorks() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("numworksfilter");
   filter = input.value.toUpperCase();
   table = document.getElementById("authortable");
   tr = table.getElementsByTagName("tr");
@@ -56,13 +94,24 @@ function myFunction() {
         </nav>
 
    <center><div class="p-3 mb-2 bg-warning-subtle text-info-emphasis"><h5>Find information on an author!</h5><br>
+   
+
+   <div class="p-3 mb-2 bg-warning-subtle text-info-emphasis">
 
     <input id="input">
    <button class="btn btn-warning" onclick="genauthornow()">Search Author!</button>
-   <input type="text" id="countfilter" onkeyup="myFunction()" placeholder="Filter By # of Works">
-    <div id="output">Your search results will appear here!</div>
-   </center>
-</div>
+   
+   <input type="text" id="namefilter" onkeyup="filterName()" placeholder="Filter By Name">
+
+  <input type="text" id="topworkfilter" onkeyup="filterTopwork()" placeholder="Filter By Top Work">
+
+  <input type="text" id="numworksfilter" onkeyup="filterWorks()" placeholder="Filter By # of Works">
+   
+   <div id="output">Your search results will appear here!</div> 
+ 
+  </center> </div>
+
+
 
 </body>
 </html>

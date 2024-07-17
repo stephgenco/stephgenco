@@ -28,9 +28,28 @@
 
     }
 
-    function myFunction() {
+    function authorFilter() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("bookfilter");
+  input = document.getElementById("filterauthor");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("booktable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+    function yearFilter() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("filteryear");
   filter = input.value.toUpperCase();
   table = document.getElementById("booktable");
   tr = table.getElementsByTagName("tr");
@@ -56,11 +75,16 @@
 
     <center><div class="p-3 mb-2 bg-primary-subtle text-primary-emphasis"><h5>Here we will generate books based on titles you search for!</h5><br>
     
+      
     <input id="input">
     <button class="btn btn-primary" onclick="genbooksnow()">Get Books!</button>
-    <input type="text" id="bookfilter" onkeyup="myFunction()" placeholder="Filter By Year">
+
+    <input type="text" id="filterauthor" onkeyup="authorFilter()" placeholder="Filter By Author">
+
+    <input type="text" id="filteryear" onkeyup="yearFilter()" placeholder="Filter By Year">
+
     <div id="output">Your search results will appear here!</div>
-    <div id="output"> </div>
+    
     </center>
 </div>
 
