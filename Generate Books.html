@@ -25,8 +25,8 @@
         }
     htmlstring += "</table> </div>";
     document.getElementById("output").innerHTML=htmlstring;
-
     }
+
 
     function authorFilter() {
   var input, filter, table, tr, td, i, txtValue;
@@ -77,16 +77,20 @@
     
       
     <input id="input">
+
     <button class="btn btn-primary" onclick="genbooksnow()">Get Books!</button>
+
+    <div id="filters">
 
     <input type="text" id="filterauthor" onkeyup="authorFilter()" placeholder="Filter By Author">
 
     <input type="text" id="filteryear" onkeyup="yearFilter()" placeholder="Filter By Year">
 
+  </div>
+
     <div id="output">Your search results will appear here!</div>
-    
-    </center>
-</div>
+
+   </center> </div>
 
 
 
