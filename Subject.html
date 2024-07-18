@@ -12,46 +12,52 @@
     <title>Subject</title>
 
     <script>
-        async function showCSbooks(){
-        const url = "https://openlibrary.org/search/subjects.json?q=computerscience"
+        async function showFicbooks(){
+        const url = "https://openlibrary.org/subjects/fiction.json"
         const options = {method: 'GET',};
         const response = await fetch (url, options);
         const result = await response.json();
-        const subjects = result["docs"];
-      var htmlstring = "<ul class='list-group'>";
-    for (let i=0; i<subjects.length; i++){
-        htmlstring += "<li class='list-group-item list-group-item-primary'>" + subjects[i]["name"]+ "</li>";
+        const subjects = result["works"];
+      var htmlstring = "<div class='table-responsive'> <table class='table table-primary table-striped'> <tr><th>Title</th><th>Author</th></tr>";
+        for (let i=0; i<subjects.length; i++){
+            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td></tr>";
+        }
+    htmlstring += "</table> </div>";
+    document.getElementById("output1").innerHTML=htmlstring;
     }
-document.getElementById("output1").innerHTML=htmlstring;
-}
-    
+  
+        async function showMysterybooks(){
+        const url = "https://openlibrary.org/subjects/mystery.json"
+        const options = {method: 'GET',};
+        const response = await fetch (url, options);
+        const result = await response.json();
+        const subjects = result["works"];
+        var htmlstring = "<div class='table-responsive'> <table class='table table-success table-striped'> <tr><th>Title</th><th>Author</th></tr>";
+        for (let i=0; i<subjects.length; i++){
+            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td></tr>";
+        }
+    htmlstring += "</table> </div>";
+    document.getElementById("output2").innerHTML=htmlstring;
+    }
 
-       
-        async function showELAbooks(){
-        const url = "https://openlibrary.org/search/subjects.json?q=reading"
+        async function showRombooks(){
+        const url = "https://openlibrary.org/subjects/love.json"
         const options = {method: 'GET',};
         const response = await fetch (url, options);
         const result = await response.json();
-        const subjects = result["docs"];
-      var htmlstring = "<ul class='list-group'>";
-    for (let i=0; i<subjects.length; i++){
-        htmlstring += "<li class='list-group-item list-group-item-primary'>" + subjects[i]["name"]+ "</li>";
+        const subjects = result["works"];
+        var htmlstring = "<div class='table-responsive'> <table class='table table-warning table-striped'> <tr><th>Title</th><th>Author</th></tr>";
+        for (let i=0; i<subjects.length; i++){
+            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td></tr>";
+        }
+    htmlstring += "</table> </div>";
+    document.getElementById("output3").innerHTML=htmlstring;
     }
-document.getElementById("output2").innerHTML=htmlstring;
-}
 
-        async function showMATHbooks(){
-        const url = "https://openlibrary.org/search/subjects.json?q=mathematics"
-        const options = {method: 'GET',};
-        const response = await fetch (url, options);
-        const result = await response.json();
-        const subjects = result["docs"];
-      var htmlstring = "<ul class='list-group'>";
-    for (let i=0; i<subjects.length; i++){
-        htmlstring += "<li class='list-group-item list-group-item-primary'>" + subjects[i]["name"]+ "</li>";
-    }
-document.getElementById("output3").innerHTML=htmlstring;
-}
+    //finding the pathway
+    //result["works"].forEach(work=>{ console.log(work.title);
+  //work.authors.forEach(author => {console.log(author.name))
+  //}) 
         </script>
 
 </head>
@@ -62,26 +68,25 @@ document.getElementById("output3").innerHTML=htmlstring;
         <a class="nav-link" href="https://stephgenco.github.io/Finalproject.html#">Go Back Home</a>
         </nav>
 
-        <center><div class="p-3 mb-2 bg-dark-subtle text-danger-emphasis"><h5>Search for books based on the search filters provided</h5></div></center>
+        <center><div class="p-3 mb-2 bg-dark-subtle text-danger-emphasis"><h5>Search for books based on the subjects filters provided</h5></div></center>
 
         <div class="container text-center">
             <div class="row align-items-start">
-    
               <div class="col-4">
                 <div class="p-3 mb-2 bg-secondary-subtle text-success-emphasis">
-                    <button class="btn btn-outline-success" onclick="showCSbooks()">Get Computer Science Books</button> <br>
+                    <button class="btn btn-outline-primary" onclick="showFicbooks()">Get Fiction Books</button> <br>
                     <div id = "output1"></div>
                   </div> </div>
     
               <div class="col-4">
                 <div class="p-3 mb-2 bg-dark-subtle text-success-emphasis">
-                    <button class="btn btn-outline-success" onclick="showELAbooks()">Get ELA Books</button> <br>
+                    <button class="btn btn-outline-success" onclick="showMysterybooks()">Get Mystery Books</button> <br>
                     <div id = "output2"></div>
               </div> </div>
     
               <div class="col-4">
                 <div class="p-3 mb-2 bg-secondary-subtle text-success-emphasis">
-                    <button class="btn btn-outline-success" onclick="showMATHbooks()">Get Math Books</button> <br>
+                    <button class="btn btn-outline-warning" onclick="showRombooks()">Get Romantic Books</button> <br>
                     <div id = "output3"></div>
               </div> </div>
               
