@@ -18,9 +18,9 @@
         const response = await fetch (url, options);
         const result = await response.json();
         const subjects = result["works"];
-      var htmlstring = "<div class='table-responsive'> <table class='table table-primary table-striped'> <tr><th>Title</th><th>Author</th></tr>";
+      var htmlstring = "<div class='table-responsive'> <table id='ficsubjecttable' class='table table-primary table-striped'> <tr><th>Title</th><th>Author</th><th>Year Published</th></tr>";
         for (let i=0; i<subjects.length; i++){
-            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td></tr>";
+            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td><td>" + subjects[i]["first_publish_year"] + "</td></tr>";
         }
     htmlstring += "</table> </div>";
     document.getElementById("output1").innerHTML=htmlstring;
@@ -32,9 +32,9 @@
         const response = await fetch (url, options);
         const result = await response.json();
         const subjects = result["works"];
-        var htmlstring = "<div class='table-responsive'> <table class='table table-success table-striped'> <tr><th>Title</th><th>Author</th></tr>";
+        var htmlstring = "<div class='table-responsive'> <table id='mystsubjecttable' class='table table-success table-striped'> <tr><th>Title</th><th>Author</th><th>Year Published</th></tr>";
         for (let i=0; i<subjects.length; i++){
-            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td></tr>";
+            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td><td>" + subjects[i]["first_publish_year"] + "</td></tr>";
         }
     htmlstring += "</table> </div>";
     document.getElementById("output2").innerHTML=htmlstring;
@@ -46,9 +46,9 @@
         const response = await fetch (url, options);
         const result = await response.json();
         const subjects = result["works"];
-        var htmlstring = "<div class='table-responsive'> <table class='table table-warning table-striped'> <tr><th>Title</th><th>Author</th></tr>";
+        var htmlstring = "<div class='table-responsive'> <table id='romsubjecttable' class='table table-warning table-striped'> <tr><th>Title</th><th>Author</th><th>Year Published</th></tr>";
         for (let i=0; i<subjects.length; i++){
-            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td></tr>";
+            htmlstring += "<tr><td>" + subjects[i]["title"] + "</td><td>" + subjects[i]["authors"][0]["name"] + "</td><td>" + subjects[i]["first_publish_year"] + "</td></tr>";
         }
     htmlstring += "</table> </div>";
     document.getElementById("output3").innerHTML=htmlstring;
@@ -58,6 +58,64 @@
     //result["works"].forEach(work=>{ console.log(work.title);
   //work.authors.forEach(author => {console.log(author.name))
   //}) 
+
+  function ficauthFilter() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("filterauthfic");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("ficsubjecttable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+  function mystauthFilter() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("filterauthmyst");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("mystsubjecttable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+  function romauthFilter() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("filterauthrom");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("romsubjecttable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
         </script>
 
 </head>
@@ -75,18 +133,21 @@
               <div class="col-4">
                 <div class="p-3 mb-2 bg-secondary-subtle text-success-emphasis">
                     <button class="btn btn-outline-primary" onclick="showFicbooks()">Get Fiction Books</button> <br>
+                    <input type="text" id="filterauthfic" onkeyup="ficauthFilter()" placeholder="Filter Author">
                     <div id = "output1"></div>
                   </div> </div>
     
               <div class="col-4">
                 <div class="p-3 mb-2 bg-dark-subtle text-success-emphasis">
                     <button class="btn btn-outline-success" onclick="showMysterybooks()">Get Mystery Books</button> <br>
+                    <input type="text" id="filterauthmyst" onkeyup="mystauthFilter()" placeholder="Filter Author">
                     <div id = "output2"></div>
               </div> </div>
     
               <div class="col-4">
                 <div class="p-3 mb-2 bg-secondary-subtle text-success-emphasis">
                     <button class="btn btn-outline-warning" onclick="showRombooks()">Get Romantic Books</button> <br>
+                    <input type="text" id="filterauthrom" onkeyup="romauthFilter()" placeholder="Filter Author">
                     <div id = "output3"></div>
               </div> </div>
               
